@@ -6,6 +6,7 @@ import { persistor, store } from './Redux/Store'
 import Hero from './components/Hero'
 import Bar from "./components/Bar/Bar"
 import Resturants from './components/Resturants'
+import Footer from './components/Footer'
 const App = () => {
   return (
     <div>
@@ -15,6 +16,7 @@ const App = () => {
             <Hero/>
             <Bar/>
             <Resturants/>
+            <Footer/>
           </PersistGate>
         </Provider>
     </div>
