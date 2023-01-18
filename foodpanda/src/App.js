@@ -14,7 +14,7 @@ const App = () => {
               <BrowserRouter>
                 <Routes>
                   <Route path='/' element={<Home/>}/>
-                  <Route path="/Menu" element={<Menu/>}/>
+                  <Route path="/Menu/:id" element={<Menu/>}/>
                 </Routes>
               </BrowserRouter>
           </PersistGate>
