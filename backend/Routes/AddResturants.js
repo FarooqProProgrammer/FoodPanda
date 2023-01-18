@@ -1,4 +1,5 @@
 const Resturants = require("../Models/AddResturants")
+const Menu = require("../Models/MenuModel")
 const express = require("express")
 const Router = express.Router()
 
@@ -15,6 +16,13 @@ Router.post("/AddResturants",async(req,res)=>{
     const data = req.body
     console.log(data);
     const ResData = new Resturants(data)
+    await ResData.save()
+    res.send({"Message":"Success"})
+})
+Router.post("/AddMenu",async(req,res)=>{
+    const data = req.body
+    console.log(data);
+    const ResData = new Menu(data)
     await ResData.save()
     res.send({"Message":"Success"})
 })

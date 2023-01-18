@@ -4,7 +4,7 @@ import { Button, Modal } from 'antd';
 import { useState } from 'react';
 import { Input } from 'antd';
 import axios from 'axios';
-import { useNavigation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Resturants = () => {
       const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,7 +12,6 @@ const Resturants = () => {
       const [Name,setName] = useState();
       const [discription,setDescription] = useState();
       const [data,setData] = useState([]);
-      const navigation = useNavigation();
 
       const showModal = () => {
         setIsModalOpen(true);
@@ -71,7 +70,7 @@ const Resturants = () => {
                       </div>
                       <div className='content w-full h-[150px]  flex flex-col justify-around items-center'>
                           <p className='overflow-hidden'>{item.Name}</p>
-                          <button onClick={()=> navigation(`/Menu/${item._id}`)} className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Menu</button>
+                          <Link to={`/Menu/${item._id}`} className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Menu</Link>
                       </div>
                     </div>
                     
