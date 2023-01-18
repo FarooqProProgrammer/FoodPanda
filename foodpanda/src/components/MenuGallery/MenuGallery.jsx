@@ -11,7 +11,7 @@ const MenuGallery = () => {
       const [Name,setName] = useState();
       const [discription,setDescription] = useState();
       const {id} = useParams();
-      console.log(id);
+      // console.log(id);
 
       const showModal = () => {
         setIsModalOpen(true);
@@ -39,6 +39,14 @@ const MenuGallery = () => {
       }
 
 
+      React.useEffect(()=>{
+        axios.get(`http://localhost:3100/getMenu`).then((res)=>{
+            console.log(res.data)
+
+        }).catch((error) => {
+            console.log(error)
+        });
+      },[])
       
 
     
