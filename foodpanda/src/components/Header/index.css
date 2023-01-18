@@ -1,3 +1,8 @@
 .header {
     box-shadow: 2px 3px 3px 3px #edf0f0;
 }
+@media (max-width:990px) {
+    .store{
+        display: none;
+    }
+}
