@@ -3,12 +3,12 @@ import {getAuth} from "firebase/auth"
 import {getFirestore} from "firebase/firestore"
 import {getStorage} from "firebase/storage"
 const firebaseConfig = {
-  apiKey: "AIzaSyAEgX81VqSYK_Bv_68JD6-uMvx-3iwK2nU",
-  authDomain: "fir-1-28c92.firebaseapp.com",
-  projectId: "fir-1-28c92",
-  storageBucket: "fir-1-28c92.appspot.com",
-  messagingSenderId: "396709616771",
-  appId: "1:396709616771:web:0364caad53de25096e8fb6"
+  apiKey: "AIzaSyAn7omstmvr7OHUjs2CkAo-N1SNJhzcKZE",
+  authDomain: "foodpand-2.firebaseapp.com",
+  projectId: "foodpand-2",
+  storageBucket: "foodpand-2.appspot.com",
+  messagingSenderId: "440240145214",
+  appId: "1:440240145214:web:e4a1294c996183a82fa26f"
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
