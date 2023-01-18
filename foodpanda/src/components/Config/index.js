@@ -3,14 +3,13 @@ import {getAuth} from "firebase/auth"
 import {getFirestore} from "firebase/firestore"
 import {getStorage} from "firebase/storage"
 const firebaseConfig = {
-  apiKey: "AIzaSyC7hQbnVhn-4CoRqjL9XFAGp1mJtJkLW08",
-  authDomain: "foodpanda-f8615.firebaseapp.com",
-  projectId: "foodpanda-f8615",
-  storageBucket: "foodpanda-f8615.appspot.com",
-  messagingSenderId: "679579849002",
-  appId: "1:679579849002:web:9c11536c498f1dcc8c0e53"
+  apiKey: "AIzaSyAEgX81VqSYK_Bv_68JD6-uMvx-3iwK2nU",
+  authDomain: "fir-1-28c92.firebaseapp.com",
+  projectId: "fir-1-28c92",
+  storageBucket: "fir-1-28c92.appspot.com",
+  messagingSenderId: "396709616771",
+  appId: "1:396709616771:web:0364caad53de25096e8fb6"
 };
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
