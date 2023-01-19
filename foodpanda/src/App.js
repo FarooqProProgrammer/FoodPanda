@@ -5,6 +5,7 @@ import { persistor, store } from './Redux/Store'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import Home from './pages/Home'
 import Menu from './pages/Menu'
+import AddToCart from './components/AddToCart'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
                 <Routes>
                   <Route path='/' element={<Home/>}/>
                   <Route path="/Menu/:id" element={<Menu/>}/>
+                  <Route path="/Cart" element={<AddToCart/>}/>
                 </Routes>
               </BrowserRouter>
           </PersistGate>

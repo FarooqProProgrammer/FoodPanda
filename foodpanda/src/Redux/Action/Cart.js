@@ -1,4 +1,4 @@
-function User(user) {
+function Cart(user) {
     console.log(user);
     return {
 
@@ -11,5 +11,5 @@ function User(user) {
 }
 
 export {
-    User
+    Cart
 }
