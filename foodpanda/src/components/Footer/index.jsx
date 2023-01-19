@@ -8,33 +8,33 @@ const Footer = () => {
       <div className='w-[332px] h-[350px]  flex flex-col justify-around items-center' >
         <h3 className='text-white text-2xl font-black'>Services</h3>
         <ul>
-            <li className='text-white mb-3 cursor-pointer'>Food Parnter</li>
-            <li className='text-white mb-3 cursor-pointer'>Time Delivery</li>
-            <li className='text-white mb-3 cursor-pointer'>Healthy Foods</li>
-            <li className='text-white mb-3 cursor-pointer'>Best Deals</li>
-            <li className='text-white mb-3 cursor-pointer'>Your Partner</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Food Parnter</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Time Delivery</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Healthy Foods</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Best Deals</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Your Partner</li>
             
         </ul>
       </div>
       <div className='w-[332px] h-[350px]  flex flex-col justify-around items-center' >
         <h3 className='text-white text-2xl font-black'>About Co</h3>
         <ul>
-            <li className='text-white mb-3 cursor-pointer'>Customer Satisfication</li>
-            <li className='text-white mb-3 cursor-pointer'>Profitable Deals</li>
-            <li className='text-white mb-3 cursor-pointer'>Since 2000</li>
-            <li className='text-white mb-3 cursor-pointer'>Best Deals</li>
-            <li className='text-white mb-3 cursor-pointer'>FAQs</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Customer Satisfication</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Profitable Deals</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Since 2000</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Best Deals</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>FAQs</li>
             
         </ul>
       </div>
       <div className='w-[332px] h-[350px]  flex flex-col justify-around items-center' >
         <h3 className='text-white text-2xl font-black'>Careers</h3>
         <ul>
-            <li className='text-white mb-3 cursor-pointer'>Suggest a Resturants</li>
-            <li className='text-white mb-3 cursor-pointer'>Corporate Customer</li>
-            <li className='text-white mb-3 cursor-pointer'>Panda Magzines</li>
-            <li className='text-white mb-3 cursor-pointer'>Partner with us</li>
-            <li className='text-white mb-3 cursor-pointer'>Become an Affiliate</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Suggest a Resturants</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Corporate Customer</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Panda Magzines</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Partner with us</li>
+            <li className='text-white mb-3 cursor-pointer hover:ml-2 hover:text-[#6d03e6]'>Become an Affiliate</li>
             
         </ul>
       </div>

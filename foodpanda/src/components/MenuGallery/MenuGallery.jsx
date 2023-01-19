@@ -138,7 +138,7 @@ const MenuGallery = () => {
                       <p className='overflow-hidden'>{item.Name}</p>
                       <button onClick={()=> Add_Item(item._id)} className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Add to Cart</button>
                   </div>
-                  <AiFillDelete onClick={()=> DeleteMenu(item._id)} size={40} className='absolute top-0 right-0 text-white cursor-pointer'/>
+                  <AiFillDelete onClick={()=> DeleteMenu(item._id)} size={40} className='absolute top-0 right-0 text-white cursor-pointer hover:text-[#e21b70]'/>
                 </div>
                 )
               })
