@@ -10,6 +10,7 @@ const MenuGallery = () => {
       const [file,setFile] = useState();
       const [Name,setName] = useState();
       const [discription,setDescription] = useState();
+      const [Menus,setMenus] = useState([]);
       const {id} = useParams();
       // console.log(id);
 
@@ -42,9 +43,10 @@ const MenuGallery = () => {
       React.useEffect(()=>{
         axios.get(`http://localhost:3100/getMenu`).then((res)=>{
             console.log(res.data)
-
+            
+            setMenus(res.data)
         }).catch((error) => {
-            // console.log(error)
+            
         });
       },[])
       
@@ -58,51 +60,23 @@ const MenuGallery = () => {
              <button onClick={showModal} className='pl-4 pr-4 pb-3 pt-3 bg-white text-[#e21b70]'>Add New Menu</button>
         </div>
         <div className='resturants grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 place-items-center gap-3'>
-            <div className='w-[300px] h-[300px] border-2 border-[#e21b70] '>
-              <div className='imageBg w-full h-[150px] '>
-                <img  className='w-full h-full' src='https://images.unsplash.com/photo-1619581073186-5b4ae1b0caad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hhaXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'/>
-              </div>
-              <div className='content w-full h-[150px]  flex flex-col justify-around items-center'>
-                  <p className='overflow-hidden'>Beautifull Chai</p>
-                  <button className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Add to Cart</button>
-              </div>
-            </div>
-            <div className='w-[300px] h-[300px] border-2 border-[#e21b70]'>
-              <div className='imageBg w-full h-[150px] '>
-                <img  className='w-full h-full' src='https://plus.unsplash.com/premium_photo-1667682209935-b6c87cced668?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8QnVyZ2VyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'/>
-              </div>
-              <div className='content w-full h-[150px]  flex flex-col justify-around items-center'>
-                  <p className='overflow-hidden'>Beautifull Berger</p>
-                  <button className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Add to Cart</button>
-              </div>
-            </div>
-            <div className='w-[300px] h-[300px] border-2 border-[#e21b70]'>
-              <div className='imageBg w-full h-[150px] '>
-                <img  className='w-full h-full' src='https://images.unsplash.com/photo-1606755456206-b25206cde27e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlbmNoJTIwZnJpZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'/>
-              </div>
-              <div className='content w-full h-[150px]  flex flex-col justify-around items-center'>
-                  <p className='overflow-hidden'>French Fries</p>
-                  <button className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Add to Cart</button>
-              </div>
-            </div>
-            <div className='w-[300px] h-[300px] border-2 border-[#e21b70]'>
-              <div className='imageBg w-full h-[150px] '>
-                <img  className='w-full h-full' src='https://images.unsplash.com/photo-1589302168068-964664d93dc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Q2hpY2tlbiUyMGJpcnlhbml8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'/>
-              </div>
-              <div className='content w-full h-[150px]  flex flex-col justify-around items-center'>
-                  <p className='overflow-hidden'>Beautifull Biryan</p>
-                  <button className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Add to cart</button>
-              </div>
-            </div>
-            <div className='w-[300px] h-[300px] border-2 border-[#e21b70]'>
-              <div className='imageBg w-full h-[150px] '>
-                <img  className='w-full h-full' src='https://images.unsplash.com/photo-1615719413546-198b25453f85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZCUyMGRlbGl2ZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60'/>
-              </div>
-              <div className='content w-full h-[150px]  flex flex-col justify-around items-center'>
-                  <p className='overflow-hidden'>Biryani</p>
-                  <button className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Add to cart</button>
-              </div>
-            </div>
+            {
+              Menus.map((item)=>{
+                return (
+                  <div className='w-[300px] h-[300px] border-2 border-[#e21b70] '>
+                  <div className='imageBg w-full h-[150px] '>
+                    <img  className='w-full h-full' src={item.url} alt={item.name}/>
+                  </div>
+                  <div className='content w-full h-[150px]  flex flex-col justify-around items-center'>
+                      <p className='overflow-hidden'>{item.Name}</p>
+                      <button className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Add to Cart</button>
+                  </div>
+                </div>
+                )
+              })
+            }
+           
+         
             
         </div>
 

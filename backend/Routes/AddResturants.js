@@ -26,8 +26,8 @@ Router.post("/AddMenu",async(req,res)=>{
     await ResData.save()
     res.send({"Message":"Success"})
 })
-Router.get("/getMenu",(req,res)=>{
-    const Data =  Menu.find()
+Router.get("/getMenu",async (req,res)=>{
+    const Data = await  Menu.find()
     console.log(Data);
     res.send(Data)
 })
