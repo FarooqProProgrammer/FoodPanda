@@ -48,11 +48,13 @@ const MenuGallery = () => {
         const [item,setItem] = useState([]);
         const [post,setPost] = useState(false)
         const Add_Item=(id)=>{
-            const ids = [...item]
-            ids.push({id:id})
-            setItem(ids)
-            console.log(item);
-        
+             axios.post(`http://localhost:3100/CartID`,{
+          id:id
+        }).then((res)=>{
+            console.log(res);
+        }).catch((error) => {
+            
+        });
            
         
         }
@@ -65,7 +67,17 @@ const MenuGallery = () => {
                 navigation("/Cart")
         }
         React.useEffect(()=>{
-        
+          axios.post(`http://localhost:3100/getMenu`,{
+            id:id
+          }).then((res)=>{
+             console.log(res.data);
+              setMenus(res.data)
+              const list = [...res.data]
+              list.push(res.data)
+              console.log(Menus);
+          }).catch((error) => {
+              
+          });
         },[post === true])
       React.useEffect(()=>{
         axios.post(`http://localhost:3100/getMenu`,{
@@ -89,6 +101,16 @@ const MenuGallery = () => {
         }).catch((error) => {
             
         });
+
+        axios.post(`http://localhost:3100/CartDelete`,{
+          id:id
+        }).then((res)=>{
+            console.log('====================================');
+            console.log("Deleted Successfully");
+            console.log('====================================');
+        }).catch({
+
+        })
       }
 
     

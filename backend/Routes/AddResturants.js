@@ -44,4 +44,9 @@ Router.post("/CartID",async(req,res)=>{
     await ResData.save()
     res.send({"Message":"Success"})
 })
+Router.post("/CartDelete/",async(req,res)=>{
+    const id = req.body.id
+    await Cart.deleteOne({id:id})
+})
+
 module.exports = Router
