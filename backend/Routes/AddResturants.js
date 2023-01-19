@@ -54,7 +54,7 @@ Router.post("/CartGet",async(req,res)=>{
     const users =await Menu.find({
         '_id' : id
     });
-
+    console.log(users);
    res.send(users)
 })
 module.exports = Router

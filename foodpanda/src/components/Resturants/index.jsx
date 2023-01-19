@@ -5,7 +5,8 @@ import { useState } from 'react';
 import { Input } from 'antd';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import { collection, addDoc } from "firebase/firestore"; 
+import { db } from '../Config';
 const Resturants = () => {
       const [isModalOpen, setIsModalOpen] = useState(false);
       const [file,setFile] = useState();
@@ -25,17 +26,24 @@ const Resturants = () => {
 
       async function Submit(){
         
-        axios.post('http://localhost:3100/AddResturants', {
+        // axios.post('http://localhost:3100/AddResturants', {
+        //   Name:Name,
+        //   discription:discription,
+        //   url:file
+        // })
+        // .then((res) => {
+        //     console.log(res.data)
+          
+        // }).catch((error) => {
+        //     console.log(error)
+        // });
+
+        const docRef = await addDoc(collection(db, "Resturants"), {
           Name:Name,
           discription:discription,
           url:file
-        })
-        .then((res) => {
-            console.log(res.data)
-          
-        }).catch((error) => {
-            console.log(error)
         });
+        console.log("Document written with ID: ", docRef.id);
 
       }
 

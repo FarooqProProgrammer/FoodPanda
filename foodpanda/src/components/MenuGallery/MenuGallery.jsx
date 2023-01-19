@@ -8,7 +8,7 @@ import {useNavigate, useParams} from "react-router-dom"
 import {AiFillDelete,AiOutlineShoppingCart} from "react-icons/ai"
 import { Cart } from '../../Redux/Action/Cart';
 import { useDispatch } from 'react-redux';
-import {setDoc,doc,deleteDoc} from "firebase/firestore"
+import {setDoc,doc,deleteDoc,addDoc,collection} from "firebase/firestore"
 import {db} from "../Config"
 const MenuGallery = () => {
       const [isModalOpen, setIsModalOpen] = useState(false);
@@ -43,6 +43,14 @@ const MenuGallery = () => {
         }).catch((error) => {
             console.log(error)
         });
+
+        const docRef = await addDoc(collection(db, "MenuGroup"), {
+          Name: Name,
+          Discription:discription,
+          url:file,
+          Resturant_id:id
+        });
+        console.log("Document written with ID: ", docRef.id);
       }
 
         const [item,setItem] = useState([]);
