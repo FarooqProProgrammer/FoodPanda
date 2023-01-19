@@ -53,7 +53,7 @@ Router.post("/CartGet",async(req,res)=>{
     console.log(id);
     const users =await Menu.find({
         '_id' : id
-    });
+    }).select("url");
     console.log(users);
    res.send(users)
 })
