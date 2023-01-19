@@ -48,13 +48,17 @@ const MenuGallery = () => {
         const [item,setItem] = useState([]);
         const [post,setPost] = useState(false)
         const Add_Item=(id)=>{
-             axios.post(`http://localhost:3100/CartID`,{
-          id:id
-        }).then((res)=>{
-            console.log(res);
-        }).catch((error) => {
+        //      axios.post(`http://localhost:3100/CartID`,{
+        //   id:id
+        // }).then((res)=>{
+        //     console.log(res);
+           
+        // }).catch((error) => {
             
-        });
+        // });
+        const list = [...item]
+        list.push(id)
+        setItem(list)
            
         
         }
@@ -64,7 +68,7 @@ const MenuGallery = () => {
           id:item
         });
       
-                navigation("/Cart")
+        navigation("/Cart")
         }
         React.useEffect(()=>{
           axios.post(`http://localhost:3100/getMenu`,{

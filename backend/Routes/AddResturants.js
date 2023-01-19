@@ -48,5 +48,13 @@ Router.post("/CartDelete/",async(req,res)=>{
     const id = req.body.id
     await Cart.deleteOne({id:id})
 })
+Router.post("/CartGet",async(req,res)=>{
+    const id = req.body
+    console.log(id);
+    const users =await Menu.find({
+        '_id' : id
+    });
 
+   res.send(users)
+})
 module.exports = Router
