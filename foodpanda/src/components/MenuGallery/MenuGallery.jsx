@@ -8,7 +8,8 @@ import {useNavigate, useParams} from "react-router-dom"
 import {AiFillDelete,AiOutlineShoppingCart} from "react-icons/ai"
 import { Cart } from '../../Redux/Action/Cart';
 import { useDispatch } from 'react-redux';
-
+import {setDoc,doc,deleteDoc} from "firebase/firestore"
+import {db} from "../Config"
 const MenuGallery = () => {
       const [isModalOpen, setIsModalOpen] = useState(false);
       const [file,setFile] = useState();
@@ -55,16 +56,13 @@ const MenuGallery = () => {
            
         
         }
-        const goto = () =>{
-          
-            axios.post(`http://localhost:3100/CartID`,{
-              id:item
-            }).then((res)=>{
-              console.log(res.data);
-            }).catch((error) => {
-                
-            });
-        
+        const goto = async () =>{
+          await deleteDoc(doc(db, "Carts","CartInfo"))
+          await setDoc(doc(db, "Carts","CartInfo"), {
+          id:item
+        });
+      
+                navigation("/Cart")
         }
         React.useEffect(()=>{
         

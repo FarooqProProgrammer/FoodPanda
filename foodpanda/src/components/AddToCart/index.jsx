@@ -12,6 +12,9 @@ const AddToCart = () => {
         <div className="title w-full h-[70px] bg-[#e21b70] flex justify-center items-center">
             <p className='text-white lg:text-xl font-black md:text-[16px] sm:text-[15px]'>You Have Selected Following Items</p>
         </div>
+        <div className="items w-full h-[500px] border-2 border-black">
+
+        </div>
         <Footer/>
     </div>
   )
