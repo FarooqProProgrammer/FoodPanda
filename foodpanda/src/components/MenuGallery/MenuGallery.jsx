@@ -56,15 +56,15 @@ const MenuGallery = () => {
         
         }
         const goto = () =>{
-          for(var i=0;item.length;i++){
+          
             axios.post(`http://localhost:3100/CartID`,{
-              id:item[i]
+              id:item
             }).then((res)=>{
               console.log(res.data);
             }).catch((error) => {
                 
             });
-        }
+        
         }
         React.useEffect(()=>{
         
