@@ -75,8 +75,8 @@ const AddToCart = () => {
         <div className="title w-full h-[70px] bg-[#e21b70] flex justify-center items-center " onClick={()=> get(newArr[0])}>
             <p className='text-white lg:text-xl font-black md:text-[16px] sm:text-[15px]'>You Have Selected Following Items</p>
         </div>
-        <div className="items w-full h-auto border-2 border-black flex justify-around items-center">
-            <div className="box w-[400px] h-auto border-2 border-black">
+        <div className="items w-full h-auto flex justify-around items-center">
+            <div className="box w-[400px] h-auto">
                 <FbImageLibrary images={url}/>
             </div>
         </div>
