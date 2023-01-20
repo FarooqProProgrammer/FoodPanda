@@ -58,8 +58,16 @@ Router.post("/CartGet",async(req,res)=>{
    res.send(users)
 })
 
-Router.put("/Update",async(req,res)=>{
-   await     Menu.findByIdAndUpdate("63c97df25931e64af15728dd",{"Name": "Chips"})
+Router.put("/Update",async (req,res)=>{
+    console.log(req.body)
+    const {Name,id,url,Discription} = req.body
+    await Menu.findByIdAndUpdate(id,{
+    "Name": Name,
+    "Discription":Discription,
+    "url":url
+    })
    res.send("Success")
+
+   
 })
 module.exports = Router

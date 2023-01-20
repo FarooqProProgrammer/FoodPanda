@@ -28,24 +28,24 @@ const Resturants = () => {
 
       async function Submit(){
         
-        // axios.post('http://localhost:3100/AddResturants', {
-        //   Name:Name,
-        //   discription:discription,
-        //   url:file
-        // })
-        // .then((res) => {
-        //     console.log(res.data)
-          
-        // }).catch((error) => {
-        //     console.log(error)
-        // });
-
-        const docRef = await addDoc(collection(db, "Resturants"), {
+        axios.post('http://localhost:3100/AddResturants', {
           Name:Name,
           discription:discription,
           url:file
+        })
+        .then((res) => {
+            console.log(res.data)
+          
+        }).catch((error) => {
+            console.log(error)
         });
-        console.log("Document written with ID: ", docRef.id);
+
+        // const docRef = await addDoc(collection(db, "Resturants"), {
+        //   Name:Name,
+        //   discription:discription,
+        //   url:file
+        // });
+        // console.log("Document written with ID: ", docRef.id);
 
       }
 

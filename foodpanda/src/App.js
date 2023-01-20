@@ -1,6 +1,6 @@
 import React from 'react'
 import { PersistGate } from 'redux-persist/integration/react'
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import { persistor, store } from './Redux/Store'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import Home from './pages/Home'
@@ -8,6 +8,7 @@ import Menu from './pages/Menu'
 import AddToCart from './components/AddToCart'
 
 const App = () => {
+  const userAuth = useSelector(state => state.UserReducer.login)
   return (
     <div>
          <Provider store={store}>
@@ -16,7 +17,8 @@ const App = () => {
                 <Routes>
                   <Route path='/' element={<Home/>}/>
                   <Route path="/Menu/:id" element={<Menu/>}/>
-                  <Route path="/Cart" element={<AddToCart/>}/>
+                    <Route path= {"/Cart"}  element={<AddToCart/>}/>
+               
                 </Routes>
               </BrowserRouter>
           </PersistGate>

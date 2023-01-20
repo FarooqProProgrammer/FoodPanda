@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { User } from '../../Redux/Action/User'
 import {AiOutlineLogout} from "react-icons/ai"
 import {  signOut } from "firebase/auth";
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,6 +19,7 @@ const Header = () => {
   const [email,setEmail] = useState();
   const [password,setPassword] = useState();
   const userAuth = useSelector(state => state.UserReducer.login)
+  const navigate = useNavigate();
   console.log(userAuth);
   const showModal = () => {
     setIsModalOpen(true);
@@ -57,6 +59,7 @@ const Header = () => {
     console.log(e);
     signOut(auth).then(() => {
       console.log("Sign Out Successfully");
+      navigate("/")
       dispatch(User(""))
     }).catch((error) => {
       // An error happened.

@@ -11,10 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {setDoc,doc,deleteDoc,addDoc,collection} from "firebase/firestore"
 import {db} from "../Config"
 import { useDisclosure } from '@chakra-ui/react';
-import Box from '@mui/material/Box';
-import Buttond from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modald from '@mui/material/Modal';
+// import { useSelector } from 'react-redux';
 import { UpdateCart } from '../../Redux/Action/Update';
 const MenuGallery = () => {
       const [isModalOpen, setIsModalOpen] = useState(false);
@@ -92,6 +89,10 @@ const MenuGallery = () => {
           Price:Price
         });
       
+        if(!userAuth){
+          navigation("/")
+          return
+        }
         navigation("/Cart")
         }
         React.useEffect(()=>{
@@ -174,7 +175,19 @@ const MenuGallery = () => {
           setIsModalOpens(false);
         };
 
-        
+        async function AddUpdate(){
+          axios.put("http://localhost:3100/Update",{
+            id:idUpdate,
+            Name:Names,
+            Discription:PriceUpdate,
+            url:UrlUpdate
+          }).then((res)=>{
+            console.log(res);
+          }).catch((e)=>{
+            console.log(e);
+          })
+          
+        }
 
         
     
@@ -237,10 +250,10 @@ const MenuGallery = () => {
           
         <Modal title="Basic Modal" open={isModalOpens} onOk={handleOks} onCancel={handleCancels}>
             <div className="fo w-full h-[400px] border-2 border-black flex flex-col justify-around items-center">
-              <Input type='text' className='w-[80%]'/>
-              <Input type='number' className='w-[80%]'/>
-              <Input type='text' className='w-[80%]'/>
-              <Button></Button>
+              <Input type='text' className='w-[80%]' placeholder={Names} onChange={(e)=> setNames(e.target.value)}/>
+              <Input type='number' className='w-[80%]' placeholder={PriceUpdate} onChange={(e)=> setPriceUpdate(e.target.value)}/>
+              <Input type='text' className='w-[80%]' placeholder={UrlUpdate} onChange={(e)=> setUrlUpdate(e.target.value)}/>
+              <Button onClick={AddUpdate}>Update</Button>
             </div>
       </Modal>
     </div>
