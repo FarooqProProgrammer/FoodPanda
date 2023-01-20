@@ -10,6 +10,8 @@ import { Cart } from '../../Redux/Action/Cart';
 import { useDispatch, useSelector } from 'react-redux';
 import {setDoc,doc,deleteDoc,addDoc,collection} from "firebase/firestore"
 import {db} from "../Config"
+import { useDisclosure } from '@chakra-ui/react';
+import Popup from '../../common/Modal/Popup';
 
 const MenuGallery = () => {
       const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,6 +19,7 @@ const MenuGallery = () => {
       const [Name,setName] = useState();
       const [price,setPrice] = useState();
       const [Menus,setMenus] = useState([]);
+      const { isOpen, onOpen, onClose } = useDisclosure()
       const userAuth = useSelector(state => state.UserReducer.login)
       const {id} = useParams();
       const navigation = useNavigate();
@@ -134,6 +137,10 @@ const MenuGallery = () => {
         })
       }
 
+      async function Update(id,price,url){
+
+      }
+
     
     
   return (
@@ -163,7 +170,7 @@ const MenuGallery = () => {
                       <p className='overflow-hidden text-3xl  hover:text-[#e21b70]'>{item.Name}</p>
                       <p className='overflow-hidden text-3xl  hover:text-[#e21b70] '>{item.Discription}: Rupees</p>
                       {userAuth.email === "admin@gmail.com"?
-                      "":
+                      <button onClick={()=>Update(item._id,item.Discription,item.url)} className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Update</button>:
                       <button onClick={()=> Add_Item(item._id,item.Discription)} className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Add to Cart</button>
 
                       }
@@ -192,6 +199,8 @@ const MenuGallery = () => {
           </div>
         </Modal> 
 
+          <Popup/>
+        
     </div>
   )
 }
