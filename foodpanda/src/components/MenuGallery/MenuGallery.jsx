@@ -54,8 +54,9 @@ const MenuGallery = () => {
       }
 
         const [item,setItem] = useState([]);
+        const [Price, setprice] = useState([])
         const [post,setPost] = useState(false)
-        const Add_Item=(id)=>{
+        const Add_Item=(id,price)=>{
         //      axios.post(`http://localhost:3100/CartID`,{
         //   id:id
         // }).then((res)=>{
@@ -67,13 +68,19 @@ const MenuGallery = () => {
         const list = [...item]
         list.push(id)
         setItem(list)
+
+        const p = [...Price]
+        p.push(price)
+        setprice(p)
            
         
         }
         const goto = async () =>{
+          console.log(Price);
           await deleteDoc(doc(db, "Carts","CartInfo"))
           await setDoc(doc(db, "Carts","CartInfo"), {
-          id:item
+          id:item,
+          Price:Price
         });
       
         navigation("/Cart")
@@ -150,7 +157,7 @@ const MenuGallery = () => {
                       <p className='overflow-hidden text-3xl  hover:text-[#e21b70]'>{item.Name}</p>
                       <p className='overflow-hidden text-3xl  hover:text-[#e21b70] '>{item.Discription}: Rupees</p>
                       
-                      <button onClick={()=> Add_Item(item._id)} className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Add to Cart</button>
+                      <button onClick={()=> Add_Item(item._id,item.Discription)} className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Add to Cart</button>
                   </div>
                   <AiFillDelete onClick={()=> DeleteMenu(item._id)} size={40} className='absolute top-0 right-0 text-white cursor-pointer hover:text-[#e21b70]'/>
                 </div>
