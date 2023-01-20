@@ -11,8 +11,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import {setDoc,doc,deleteDoc,addDoc,collection} from "firebase/firestore"
 import {db} from "../Config"
 import { useDisclosure } from '@chakra-ui/react';
-import Popup from '../../common/Modal/Popup';
-
+import Box from '@mui/material/Box';
+import Buttond from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modald from '@mui/material/Modal';
+import { UpdateCart } from '../../Redux/Action/Update';
 const MenuGallery = () => {
       const [isModalOpen, setIsModalOpen] = useState(false);
       const [file,setFile] = useState();
@@ -34,7 +37,8 @@ const MenuGallery = () => {
       const handleCancel = () => {
         setIsModalOpen(false);
       };
-
+      // console.log(props);
+     
       async function Submit(){
         axios.post('http://localhost:3100/AddMenu', {
           Name: Name,
@@ -137,11 +141,42 @@ const MenuGallery = () => {
         })
       }
 
-      async function Update(id,price,url){
-
-      }
-
+        // function Update(id,price,url){
+        //   console.log(id,price,url);
+        //   showModals()
+        // }
     
+
+        const [isModalOpens, setIsModalOpens] = useState(false);
+        const [idUpdate,setIdUpdate] = useState();
+        const [PriceUpdate,setPriceUpdate] = useState();
+        const [UrlUpdate,setUrlUpdate] = useState();
+        const [Names, setNames] = useState();
+        
+        const showModals = (id,name,price,url) => {
+          const updateItem = {
+            id:id,
+            name:name,
+            price:price,
+            url:url
+          }
+          setIdUpdate(id);
+          setNames(name)
+          setPriceUpdate(price);
+          setUrlUpdate(url)
+          dispatch(UpdateCart(updateItem))
+          setIsModalOpens(true);
+        };
+        const handleOks = () => {
+          setIsModalOpens(false);
+        };
+        const handleCancels = () => {
+          setIsModalOpens(false);
+        };
+
+        
+
+        
     
   return (
     <div className='w-full h-auto  mt-4'>
@@ -170,7 +205,7 @@ const MenuGallery = () => {
                       <p className='overflow-hidden text-3xl  hover:text-[#e21b70]'>{item.Name}</p>
                       <p className='overflow-hidden text-3xl  hover:text-[#e21b70] '>{item.Discription}: Rupees</p>
                       {userAuth.email === "admin@gmail.com"?
-                      <button onClick={()=>Update(item._id,item.Discription,item.url)} className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Update</button>:
+                      <button onClick={()=> showModals(item._id,item.Name,item.Discription,item.url)} className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Update</button>:
                       <button onClick={()=> Add_Item(item._id,item.Discription)} className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Add to Cart</button>
 
                       }
@@ -199,8 +234,15 @@ const MenuGallery = () => {
           </div>
         </Modal> 
 
-          <Popup/>
-        
+          
+        <Modal title="Basic Modal" open={isModalOpens} onOk={handleOks} onCancel={handleCancels}>
+            <div className="fo w-full h-[400px] border-2 border-black flex flex-col justify-around items-center">
+              <Input type='text' className='w-[80%]'/>
+              <Input type='number' className='w-[80%]'/>
+              <Input type='text' className='w-[80%]'/>
+              <Button></Button>
+            </div>
+      </Modal>
     </div>
   )
 }
