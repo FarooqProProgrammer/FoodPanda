@@ -7,13 +7,15 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { collection, addDoc } from "firebase/firestore"; 
 import { db } from '../Config';
+import { useSelector } from 'react-redux';
+
 const Resturants = () => {
       const [isModalOpen, setIsModalOpen] = useState(false);
       const [file,setFile] = useState();
       const [Name,setName] = useState();
       const [discription,setDescription] = useState();
       const [data,setData] = useState([]);
-
+      const userAuth = useSelector(state => state.UserReducer.login)
       const showModal = () => {
         setIsModalOpen(true);
       };
@@ -65,7 +67,8 @@ const Resturants = () => {
     <div className='w-full h-auto  mt-[130px]'>
         <div className="title w-full h-[60px]  bg-[#e21b70] flex justify-around items-center">
              <h3 className='text-2xl font-black text-white'>Resturants</h3>
-             <button onClick={showModal} className='pl-4 pr-4 pb-3 pt-3 bg-white text-[#e21b70]'>Add New Resturants</button>
+             {userAuth.email === "admin@gmail.com" ?  <button onClick={showModal} className='pl-4 pr-4 pb-3 pt-3 bg-white text-[#e21b70]'>Add New Resturants</button>:""}
+            
         </div>
 ,        <div className='resturants grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 place-items-center gap-3'>
             

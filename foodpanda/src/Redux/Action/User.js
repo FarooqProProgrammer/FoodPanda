@@ -1,8 +1,9 @@
 function User(user) {
     console.log(user);
+    console.log(user);
     return {
 
-        type: 'SET_ADD_CART',
+        type: 'SET_LOGIN_CART',
 
         data: user
 

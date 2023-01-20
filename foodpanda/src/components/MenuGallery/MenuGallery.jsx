@@ -7,15 +7,17 @@ import axios from "axios"
 import {useNavigate, useParams} from "react-router-dom"
 import {AiFillDelete,AiOutlineShoppingCart} from "react-icons/ai"
 import { Cart } from '../../Redux/Action/Cart';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {setDoc,doc,deleteDoc,addDoc,collection} from "firebase/firestore"
 import {db} from "../Config"
+
 const MenuGallery = () => {
       const [isModalOpen, setIsModalOpen] = useState(false);
       const [file,setFile] = useState();
       const [Name,setName] = useState();
       const [price,setPrice] = useState();
       const [Menus,setMenus] = useState([]);
+      const userAuth = useSelector(state => state.UserReducer.login)
       const {id} = useParams();
       const navigation = useNavigate();
       const dispatch = useDispatch();
@@ -139,8 +141,12 @@ const MenuGallery = () => {
         <div className="title w-full h-[60px]  bg-[#e21b70] flex justify-around items-center">
              <h3 className='text-2xl font-black text-white'>Resturants Menu</h3>
              <div className="box flex">
-           
-                <button onClick={showModal} className='pl-4 pr-4 pb-3 pt-3 bg-white text-[#e21b70]'>Add New Menu</button>
+                {userAuth.email === "admin@gmail.com" ?
+                 <button onClick={showModal} className='pl-4 pr-4 pb-3 pt-3 bg-white text-[#e21b70]'>Add New Menu</button>
+                 :
+                 ""
+                }
+               
                 <AiOutlineShoppingCart size={40} className='text-white font-black ml-2 mt-1 cursor-pointer' onClick={goto}/>
              </div>
             
@@ -156,10 +162,18 @@ const MenuGallery = () => {
                   <div className='content w-full h-[150px]  flex flex-col justify-around items-center'>
                       <p className='overflow-hidden text-3xl  hover:text-[#e21b70]'>{item.Name}</p>
                       <p className='overflow-hidden text-3xl  hover:text-[#e21b70] '>{item.Discription}: Rupees</p>
-                      
+                      {userAuth.email === "admin@gmail.com"?
+                      "":
                       <button onClick={()=> Add_Item(item._id,item.Discription)} className='bg-[#e21b70] text-white border-2 hover:text-[#e21b70] hover:bg-white hover:border-[#e21b70] pl-5 pr-5 pt-2 pb-2'>Add to Cart</button>
+
+                      }
                   </div>
-                  <AiFillDelete onClick={()=> DeleteMenu(item._id)} size={40} className='absolute top-0 right-0 text-white cursor-pointer hover:text-[#e21b70]'/>
+                  {userAuth.email === "admin@gmail.com" ?
+                                    <AiFillDelete onClick={()=> DeleteMenu(item._id)} size={40} className='absolute top-0 right-0 text-white cursor-pointer hover:text-[#e21b70]'/>
+
+                                  :
+                                  ""
+                                  }
                 </div>
                 )
               })

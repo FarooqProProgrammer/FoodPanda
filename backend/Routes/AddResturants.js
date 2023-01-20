@@ -57,4 +57,9 @@ Router.post("/CartGet",async(req,res)=>{
     console.log(users);
    res.send(users)
 })
+
+Router.put("/Update",async(req,res)=>{
+   await     Menu.findByIdAndUpdate("63c97df25931e64af15728dd",{"Name": "Chips"})
+   res.send("Success")
+})
 module.exports = Router
